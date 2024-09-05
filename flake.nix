@@ -26,7 +26,8 @@
           '';
           hardeningDisable = [ "all" ];
 
-          packages = [ pkgs.go_1_22 pkgs.protobuf pkgs.protoc-gen-go pkgs.git ];
+          packages =
+            [ pkgs.go_1_22 pkgs.protobuf pkgs.protoc-gen-go pkgs.git pkgs.act ];
         };
       });
     };
