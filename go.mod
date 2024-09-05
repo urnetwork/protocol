@@ -1,4 +1,4 @@
-module bringyour.com/protocol
+module github.com/urnetwork/protocol
 
 go 1.22.0
 
