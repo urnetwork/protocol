@@ -7,6 +7,6 @@ jobs:
       - uses: actions/checkout@v4.1.7
       - uses: JRMurr/direnv-nix-action@v4.1.0
       - name: generate protobuf
-        run: go generate .
+        run: go generate . && go mod tidy
       - name: check if protobuf files are up to date
         run: git diff --exit-code
