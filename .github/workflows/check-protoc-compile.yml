@@ -1,0 +1,30 @@
+name: Measure Troughput
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  measure_throughput:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Current Repo
+        uses: actions/checkout@v3
+
+      - name: "Setup env"
+        uses: JRMurr/direnv-nix-action@v4.1.0
+
+      - name: run protoc
+        run: make
+
+      - uses: infotroph/tree-is-clean@v1
+        with:
+          check_untracked: true
