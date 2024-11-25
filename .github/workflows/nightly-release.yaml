@@ -37,10 +37,12 @@ jobs:
         run: make
 
       - name: fix go mod
+        if: ${{ steps.releases_needed.outputs.RELEASE_NEEDED == 'true'}}
         run: |
           go mod tidy
 
       - name: Create Release
+        if: ${{ steps.releases_needed.outputs.RELEASE_NEEDED == 'true'}}
         id: create-release
         run: |
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
@@ -56,6 +58,7 @@ jobs:
           echo "version=$($HOME/go/bin/semver-release latest .)" >> "$GITHUB_OUTPUT"
 
       - name: Create Github Release
+        if: ${{ steps.releases_needed.outputs.RELEASE_NEEDED == 'true'}}
         uses: "comnoco/create-release-action@v2"
         with:
           tag_name: v${{steps.create-release.outputs.version}}
