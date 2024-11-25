@@ -1,4 +1,4 @@
-name: Measure Troughput
+name: Check Protoc Generated Golang
 permissions:
   contents: read
   pull-requests: write
@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  measure_throughput:
+  check_protoc:
     runs-on: ubuntu-latest
 
     steps:
