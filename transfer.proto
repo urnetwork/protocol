@@ -188,6 +188,8 @@ enum ContractError {
     NoPermission = 0;
     InsufficientBalance = 1;
     Setup = 2;
+    Trust = 3;
+    Invalid = 4;
 }
 
 
